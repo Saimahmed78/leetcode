@@ -19,6 +19,12 @@ enum userRole {
   MEMBER
 }
 
+enum difficultyLevel {
+  EASY
+  MEDIUM
+  HARD
+}
+
 model User {
   id                      String    @id @default(uuid())
   name                    String
@@ -34,4 +40,24 @@ model User {
   refreshToken            String?   @unique
   createdAt               DateTime  @default(now())
   updatedAt               DateTime  @updatedAt
+  problems                Problem[]
+}
+
+model Problem {
+  id                 String          @id @default(uuid())
+  description        String
+  difficult          difficultyLevel
+  constraints        String
+  examples           Json
+  hints              String?
+  editorial          String?
+  tags               String[]
+  userId             String
+  testcases          Json
+  codeSnippets       Json
+  referenceSolutions Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

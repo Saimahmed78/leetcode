@@ -137,9 +137,30 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ProblemScalarFieldEnum = {
+  id: 'id',
+  description: 'description',
+  difficult: 'difficult',
+  constraints: 'constraints',
+  examples: 'examples',
+  hints: 'hints',
+  editorial: 'editorial',
+  tags: 'tags',
+  userId: 'userId',
+  testcases: 'testcases',
+  codeSnippets: 'codeSnippets',
+  referenceSolutions: 'referenceSolutions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -151,13 +172,26 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
 exports.userRole = exports.$Enums.userRole = {
   ADMIN: 'ADMIN',
   MEMBER: 'MEMBER'
 };
 
+exports.difficultyLevel = exports.$Enums.difficultyLevel = {
+  EASY: 'EASY',
+  MEDIUM: 'MEDIUM',
+  HARD: 'HARD'
+};
+
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Problem: 'Problem'
 };
 
 /**
