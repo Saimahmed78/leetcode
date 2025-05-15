@@ -12,7 +12,6 @@ export const getjudge0Languageid = (language) => {
   return languageMap[language.toUpperCase()];
 };
 
-
 export const submitBatch = async (submissions) => {
   const endpoint = `${process.env.JUDGE0_API_URL}/submissions/batch`;
 
@@ -46,8 +45,6 @@ export const pollBatchResult = async (tokens) => {
     {
       params: {
         tokens: tokens.join(","),
-        base64_encoded: false,
-        fields: "*",
       },
       headers,
       timeout: 15000,
