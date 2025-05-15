@@ -4,6 +4,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 import { ApiError } from "./utils/ApiError.js";
 import cookieParser from "cookie-parser";
+import problemRoutes from "./routes/problem.routes.js";
 dotenv.config({
   path: ".env",
 });
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/api/v1/users", authRoutes);
+app.use("/api/v1/problems", problemRoutes);
 app.use((err, req, res, next) => {
   console.error("💥 Error Middleware Triggered:", err);
 

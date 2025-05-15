@@ -2219,6 +2219,7 @@ export namespace Prisma {
 
   export type ProblemMinAggregateOutputType = {
     id: string | null
+    title: string | null
     description: string | null
     difficult: $Enums.difficultyLevel | null
     constraints: string | null
@@ -2231,6 +2232,7 @@ export namespace Prisma {
 
   export type ProblemMaxAggregateOutputType = {
     id: string | null
+    title: string | null
     description: string | null
     difficult: $Enums.difficultyLevel | null
     constraints: string | null
@@ -2243,6 +2245,7 @@ export namespace Prisma {
 
   export type ProblemCountAggregateOutputType = {
     id: number
+    title: number
     description: number
     difficult: number
     constraints: number
@@ -2262,6 +2265,7 @@ export namespace Prisma {
 
   export type ProblemMinAggregateInputType = {
     id?: true
+    title?: true
     description?: true
     difficult?: true
     constraints?: true
@@ -2274,6 +2278,7 @@ export namespace Prisma {
 
   export type ProblemMaxAggregateInputType = {
     id?: true
+    title?: true
     description?: true
     difficult?: true
     constraints?: true
@@ -2286,6 +2291,7 @@ export namespace Prisma {
 
   export type ProblemCountAggregateInputType = {
     id?: true
+    title?: true
     description?: true
     difficult?: true
     constraints?: true
@@ -2376,6 +2382,7 @@ export namespace Prisma {
 
   export type ProblemGroupByOutputType = {
     id: string
+    title: string
     description: string
     difficult: $Enums.difficultyLevel
     constraints: string
@@ -2410,6 +2417,7 @@ export namespace Prisma {
 
   export type ProblemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     description?: boolean
     difficult?: boolean
     constraints?: boolean
@@ -2428,6 +2436,7 @@ export namespace Prisma {
 
   export type ProblemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     description?: boolean
     difficult?: boolean
     constraints?: boolean
@@ -2446,6 +2455,7 @@ export namespace Prisma {
 
   export type ProblemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     description?: boolean
     difficult?: boolean
     constraints?: boolean
@@ -2464,6 +2474,7 @@ export namespace Prisma {
 
   export type ProblemSelectScalar = {
     id?: boolean
+    title?: boolean
     description?: boolean
     difficult?: boolean
     constraints?: boolean
@@ -2479,7 +2490,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "difficult" | "constraints" | "examples" | "hints" | "editorial" | "tags" | "userId" | "testcases" | "codeSnippets" | "referenceSolutions" | "createdAt" | "updatedAt", ExtArgs["result"]["problem"]>
+  export type ProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "difficult" | "constraints" | "examples" | "hints" | "editorial" | "tags" | "userId" | "testcases" | "codeSnippets" | "referenceSolutions" | "createdAt" | "updatedAt", ExtArgs["result"]["problem"]>
   export type ProblemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2497,6 +2508,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      title: string
       description: string
       difficult: $Enums.difficultyLevel
       constraints: string
@@ -2935,6 +2947,7 @@ export namespace Prisma {
    */
   interface ProblemFieldRefs {
     readonly id: FieldRef<"Problem", 'String'>
+    readonly title: FieldRef<"Problem", 'String'>
     readonly description: FieldRef<"Problem", 'String'>
     readonly difficult: FieldRef<"Problem", 'difficultyLevel'>
     readonly constraints: FieldRef<"Problem", 'String'>
@@ -3398,6 +3411,7 @@ export namespace Prisma {
 
   export const ProblemScalarFieldEnum: {
     id: 'id',
+    title: 'title',
     description: 'description',
     difficult: 'difficult',
     constraints: 'constraints',
@@ -3660,6 +3674,7 @@ export namespace Prisma {
     OR?: ProblemWhereInput[]
     NOT?: ProblemWhereInput | ProblemWhereInput[]
     id?: StringFilter<"Problem"> | string
+    title?: StringFilter<"Problem"> | string
     description?: StringFilter<"Problem"> | string
     difficult?: EnumdifficultyLevelFilter<"Problem"> | $Enums.difficultyLevel
     constraints?: StringFilter<"Problem"> | string
@@ -3678,6 +3693,7 @@ export namespace Prisma {
 
   export type ProblemOrderByWithRelationInput = {
     id?: SortOrder
+    title?: SortOrder
     description?: SortOrder
     difficult?: SortOrder
     constraints?: SortOrder
@@ -3699,6 +3715,7 @@ export namespace Prisma {
     AND?: ProblemWhereInput | ProblemWhereInput[]
     OR?: ProblemWhereInput[]
     NOT?: ProblemWhereInput | ProblemWhereInput[]
+    title?: StringFilter<"Problem"> | string
     description?: StringFilter<"Problem"> | string
     difficult?: EnumdifficultyLevelFilter<"Problem"> | $Enums.difficultyLevel
     constraints?: StringFilter<"Problem"> | string
@@ -3717,6 +3734,7 @@ export namespace Prisma {
 
   export type ProblemOrderByWithAggregationInput = {
     id?: SortOrder
+    title?: SortOrder
     description?: SortOrder
     difficult?: SortOrder
     constraints?: SortOrder
@@ -3740,6 +3758,7 @@ export namespace Prisma {
     OR?: ProblemScalarWhereWithAggregatesInput[]
     NOT?: ProblemScalarWhereWithAggregatesInput | ProblemScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Problem"> | string
+    title?: StringWithAggregatesFilter<"Problem"> | string
     description?: StringWithAggregatesFilter<"Problem"> | string
     difficult?: EnumdifficultyLevelWithAggregatesFilter<"Problem"> | $Enums.difficultyLevel
     constraints?: StringWithAggregatesFilter<"Problem"> | string
@@ -3880,6 +3899,7 @@ export namespace Prisma {
 
   export type ProblemCreateInput = {
     id?: string
+    title: string
     description: string
     difficult: $Enums.difficultyLevel
     constraints: string
@@ -3897,6 +3917,7 @@ export namespace Prisma {
 
   export type ProblemUncheckedCreateInput = {
     id?: string
+    title: string
     description: string
     difficult: $Enums.difficultyLevel
     constraints: string
@@ -3914,6 +3935,7 @@ export namespace Prisma {
 
   export type ProblemUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     difficult?: EnumdifficultyLevelFieldUpdateOperationsInput | $Enums.difficultyLevel
     constraints?: StringFieldUpdateOperationsInput | string
@@ -3931,6 +3953,7 @@ export namespace Prisma {
 
   export type ProblemUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     difficult?: EnumdifficultyLevelFieldUpdateOperationsInput | $Enums.difficultyLevel
     constraints?: StringFieldUpdateOperationsInput | string
@@ -3948,6 +3971,7 @@ export namespace Prisma {
 
   export type ProblemCreateManyInput = {
     id?: string
+    title: string
     description: string
     difficult: $Enums.difficultyLevel
     constraints: string
@@ -3965,6 +3989,7 @@ export namespace Prisma {
 
   export type ProblemUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     difficult?: EnumdifficultyLevelFieldUpdateOperationsInput | $Enums.difficultyLevel
     constraints?: StringFieldUpdateOperationsInput | string
@@ -3981,6 +4006,7 @@ export namespace Prisma {
 
   export type ProblemUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     difficult?: EnumdifficultyLevelFieldUpdateOperationsInput | $Enums.difficultyLevel
     constraints?: StringFieldUpdateOperationsInput | string
@@ -4253,6 +4279,7 @@ export namespace Prisma {
 
   export type ProblemCountOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     description?: SortOrder
     difficult?: SortOrder
     constraints?: SortOrder
@@ -4270,6 +4297,7 @@ export namespace Prisma {
 
   export type ProblemMaxOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     description?: SortOrder
     difficult?: SortOrder
     constraints?: SortOrder
@@ -4282,6 +4310,7 @@ export namespace Prisma {
 
   export type ProblemMinOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     description?: SortOrder
     difficult?: SortOrder
     constraints?: SortOrder
@@ -4627,6 +4656,7 @@ export namespace Prisma {
 
   export type ProblemCreateWithoutUserInput = {
     id?: string
+    title: string
     description: string
     difficult: $Enums.difficultyLevel
     constraints: string
@@ -4643,6 +4673,7 @@ export namespace Prisma {
 
   export type ProblemUncheckedCreateWithoutUserInput = {
     id?: string
+    title: string
     description: string
     difficult: $Enums.difficultyLevel
     constraints: string
@@ -4688,6 +4719,7 @@ export namespace Prisma {
     OR?: ProblemScalarWhereInput[]
     NOT?: ProblemScalarWhereInput | ProblemScalarWhereInput[]
     id?: StringFilter<"Problem"> | string
+    title?: StringFilter<"Problem"> | string
     description?: StringFilter<"Problem"> | string
     difficult?: EnumdifficultyLevelFilter<"Problem"> | $Enums.difficultyLevel
     constraints?: StringFilter<"Problem"> | string
@@ -4789,6 +4821,7 @@ export namespace Prisma {
 
   export type ProblemCreateManyUserInput = {
     id?: string
+    title: string
     description: string
     difficult: $Enums.difficultyLevel
     constraints: string
@@ -4805,6 +4838,7 @@ export namespace Prisma {
 
   export type ProblemUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     difficult?: EnumdifficultyLevelFieldUpdateOperationsInput | $Enums.difficultyLevel
     constraints?: StringFieldUpdateOperationsInput | string
@@ -4821,6 +4855,7 @@ export namespace Prisma {
 
   export type ProblemUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     difficult?: EnumdifficultyLevelFieldUpdateOperationsInput | $Enums.difficultyLevel
     constraints?: StringFieldUpdateOperationsInput | string
@@ -4837,6 +4872,7 @@ export namespace Prisma {
 
   export type ProblemUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     difficult?: EnumdifficultyLevelFieldUpdateOperationsInput | $Enums.difficultyLevel
     constraints?: StringFieldUpdateOperationsInput | string

@@ -17,7 +17,7 @@ import {
 import { userRole } from "../generated/prisma/index.js";
 const userRegister = asyncHandler(async (req, res) => {
   // get email and password from the user
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
   // then find the user by email
   const existingUser = await db.User.findUnique({ where: { email } });
@@ -27,7 +27,7 @@ const userRegister = asyncHandler(async (req, res) => {
   // if not exist then create verification token and verificationCreate a user
   const token = crypto.randomBytes(62).toString("hex");
   const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
-  const tokenExpiry = new Date (Date.now() + 5 * 60 * 1000);
+  const tokenExpiry = new Date(Date.now() + 5 * 60 * 1000);
 
   const newUser = await db.User.create({
     data: {
@@ -36,7 +36,7 @@ const userRegister = asyncHandler(async (req, res) => {
       name,
       verificationToken: hashedToken,
       verificationTokenExpiry: tokenExpiry,
-      role: userRole.MEMBER,
+      role: role || userRole.MEMBER,
     },
   });
 
@@ -70,6 +70,7 @@ const userRegister = asyncHandler(async (req, res) => {
 });
 const verifyUser = asyncHandler(async (req, res) => {
   // get token from req.params
+  console.log("reached verfiy User ");
   const { token } = req.params;
 
   // validate it
@@ -85,7 +86,7 @@ const verifyUser = asyncHandler(async (req, res) => {
       verificationTokenExpiry: { gt: new Date() },
     },
   });
-  const name = userToVerify.name;
+
   // if user do not exist send error
   if (!userToVerify) {
     throw new ApiError(404, "User not found. Maybe Token is invalid");
@@ -101,6 +102,7 @@ const verifyUser = asyncHandler(async (req, res) => {
       verificationTokenExpiry: null,
     },
   });
+  const name = userToVerify.name;
 
   try {
     await sendMail({
@@ -193,7 +195,7 @@ const loginUser = asyncHandler(async (req, res) => {
       email: loggedinUser.email,
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "15m"},
+    { expiresIn: "15m" },
   );
   //save access token in cookies
   const accessTokenCookieOptions = {

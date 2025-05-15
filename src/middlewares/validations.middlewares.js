@@ -13,9 +13,8 @@ const validators = (req, res, next) => {
       [err.path]: err.msg,
     });
   });
-  return res.status(200).json(
-    new ApiError(400,"Validation failed", extractederrors)
-  )
+
+  throw new ApiError(400, "Validation failed", extractederrors);
 };
 
 export default validators;
