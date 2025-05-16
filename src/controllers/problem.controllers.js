@@ -87,8 +87,21 @@ const getProblemById = asyncHandler(async (req, res) => {
     new ApiResponse(200, "Problem fetched Successfully", problem),
   );
 });
-const deleteProblem = asyncHandler(async (req, res) => {});
+const deleteProblem = asyncHandler(async (req, res) => {
+  // get id form params
+  const { id } = req.params;
+  const problemToBefind = await db.Problem.findUnique({ where: { id } });
+  //check if problems exist
+  if (!problemToBefind) {
+    throw new ApiError(404, "No problem found");
+  }
+  const problemToBeDeleted = await db.Problem.delete({ where: { id } });
+
+  return res.json(
+    new ApiResponse(200, "Problem Deleted Successfully", problemToBeDeleted),
+  );
+});
 const updateProblem = asyncHandler(async (req, res) => {});
 const getProblemsSavedByUser = asyncHandler(async (req, res) => {});
 
-export { createProblem, getAllProblems, getProblemById };
+export { createProblem, getAllProblems, getProblemById ,deleteProblem};
