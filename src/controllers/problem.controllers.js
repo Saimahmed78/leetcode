@@ -78,7 +78,7 @@ const getAllProblems = asyncHandler(async (req, res) => {
 const getProblemById = asyncHandler(async (req, res) => {
   // get id form params
   const { id } = req.params;
-  const problem = await db.Problem.findMany({ where: { id } });
+  const problem = await db.Problem.findUnique({ where: { id } });
   //check if problems exist
   if (!problem) {
     throw new ApiError(404, "No problem found");
@@ -104,4 +104,4 @@ const deleteProblem = asyncHandler(async (req, res) => {
 const updateProblem = asyncHandler(async (req, res) => {});
 const getProblemsSavedByUser = asyncHandler(async (req, res) => {});
 
-export { createProblem, getAllProblems, getProblemById ,deleteProblem};
+export { createProblem, getAllProblems, getProblemById, deleteProblem };
