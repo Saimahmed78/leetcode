@@ -5,8 +5,8 @@ import { ApiError } from "../utils/ApiError.js";
 
 export const getjudge0Languageid = (language) => {
   const languageMap = {
-    JAVA: 61,
-    PYTHON: 71,
+    JAVA: 62,
+    PYTHON: 70,
     JAVASCRIPT: 63,
   };
   return languageMap[language.toUpperCase()];
@@ -35,21 +35,25 @@ export const submitBatch = async (submissions) => {
 const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 export const pollBatchResult = async (tokens) => {
-  const headers = {
-    "x-rapidapi-key": process.env.RAPIDAPI_KEY,
-    "x-rapidapi-host": process.env.RAPIDAPI_HOST,
-  };
+  while (true) {
+    const headers = {
+      "x-rapidapi-key": process.env.RAPIDAPI_KEY,
+      "x-rapidapi-host": process.env.RAPIDAPI_HOST,
+    };
 
-  const { data } = await axios.get(
-    `${process.env.JUDGE0_API_URL}/submissions/batch`,
-    {
-      params: {
-        tokens: tokens.join(","),
+    const { data } = await axios.get(
+      `${process.env.JUDGE0_API_URL}/submissions/batch`,
+      {
+        params: {
+          tokens: tokens.join(","),
+        },
+        headers,
+        timeout: 15000,
       },
-      headers,
-      timeout: 15000,
-    },
-  );
-
-  return data.submissions;
+    );
+    let results = data.submissions;
+    let Alldone = results.every((r) => r.status.id != 1 && r.status.id != 2);
+    if (Alldone) return results;
+    sleep(3000);
+  }
 };
