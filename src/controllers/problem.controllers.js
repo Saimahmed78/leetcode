@@ -75,9 +75,20 @@ const getAllProblems = asyncHandler(async (req, res) => {
   }
   return res.json(new ApiResponse(200, "All Problems fetched Successfully"));
 });
-const getProblemById = asyncHandler(async (req, res) => {});
+const getProblemById = asyncHandler(async (req, res) => {
+  // get id form params
+  const { id } = req.params;
+  const problem = await db.Problem.findMany({ where: { id } });
+  //check if problems exist
+  if (!problem) {
+    throw new ApiError(404, "No problem found");
+  }
+  return res.json(
+    new ApiResponse(200, "Problem fetched Successfully", problem),
+  );
+});
 const deleteProblem = asyncHandler(async (req, res) => {});
 const updateProblem = asyncHandler(async (req, res) => {});
 const getProblemsSavedByUser = asyncHandler(async (req, res) => {});
 
-export { createProblem, getAllProblems };
+export { createProblem, getAllProblems, getProblemById };
