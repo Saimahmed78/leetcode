@@ -54,6 +54,7 @@ export const pollBatchResult = async (tokens) => {
     let results = data.submissions;
     let Alldone = results.every((r) => r.status.id != 1 && r.status.id != 2);
     if (Alldone) return results;
-    sleep(3000);
+    
+    await sleep(3000);
   }
 };
