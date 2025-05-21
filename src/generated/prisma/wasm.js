@@ -159,6 +159,7 @@ exports.Prisma.SubmissionScalarFieldEnum = {
   id: 'id',
   problemId: 'problemId',
   userId: 'userId',
+  language: 'language',
   sourceCode: 'sourceCode',
   stderr: 'stderr',
   stdout: 'stdout',
@@ -174,14 +175,15 @@ exports.Prisma.SubmissionScalarFieldEnum = {
 exports.Prisma.TestCasesResultsScalarFieldEnum = {
   id: 'id',
   submissionId: 'submissionId',
-  stderr: 'stderr',
   testCase: 'testCase',
+  stderr: 'stderr',
   status: 'status',
   passed: 'passed',
   expectedOutput: 'expectedOutput',
   actualOutput: 'actualOutput',
   time: 'time',
   memory: 'memory',
+  compileOutput: 'compileOutput',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

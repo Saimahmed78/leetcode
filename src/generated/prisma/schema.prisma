@@ -70,6 +70,7 @@ model Submission {
   id           String             @id @default(uuid())
   problemId    String
   userId       String
+  language     String?
   sourceCode   Json
   stderr       String?
   stdout       String?
@@ -88,14 +89,15 @@ model Submission {
 model TestCasesResults {
   id             String  @id @default(uuid())
   submissionId   String
-  stderr         String?
   testCase       Int
+  stderr         String?
   status         String
   passed         Boolean
   expectedOutput String
   actualOutput   String?
   time           String?
   memory         String?
+  compileOutput  String?
 
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt

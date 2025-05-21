@@ -63,13 +63,14 @@ model Problem {
   updatedAt          DateTime         @updatedAt
   user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   submission         Submission[]
-  solvedBy     SolvedProblems[]
+  solvedBy           SolvedProblems[]
 }
 
 model Submission {
   id           String             @id @default(uuid())
   problemId    String
   userId       String
+  language     String?
   sourceCode   Json
   stderr       String?
   stdout       String?
@@ -83,20 +84,20 @@ model Submission {
   user         User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   problem      Problem            @relation(fields: [problemId], references: [id], onDelete: Cascade)
   testcases    TestCasesResults[]
-  
 }
 
 model TestCasesResults {
   id             String  @id @default(uuid())
   submissionId   String
-  stderr         String?
   testCase       Int
+  stderr         String?
   status         String
   passed         Boolean
   expectedOutput String
   actualOutput   String?
   time           String?
   memory         String?
+  compileOutput  String?
 
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt

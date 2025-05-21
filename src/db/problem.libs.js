@@ -54,7 +54,16 @@ export const pollBatchResult = async (tokens) => {
     let results = data.submissions;
     let Alldone = results.every((r) => r.status.id != 1 && r.status.id != 2);
     if (Alldone) return results;
-    
+
     await sleep(3000);
   }
+};
+
+export const getjudge0LanguageName = (language_id) => {
+  const languageMap = {
+    62: "JAVA",
+    70: "PYTHON",
+    63: "JAVASCRIPT",
+  };
+  return languageMap[language_id];
 };
